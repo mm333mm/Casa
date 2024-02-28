@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Butons</h1>
+        <h1>Butons atyttytgtyga</h1>
         <span v-for="num in 10">
             <button @click="click(num)">{{ num }}</button>
         </span>
