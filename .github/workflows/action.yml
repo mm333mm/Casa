@@ -15,10 +15,10 @@ jobs:
           cd ${{ github.workspace }}
           cd ./cont
           npm install
-          eslint . --ext .js,.jsx,.ts,.tsx
           npm run build
           cd ${{ github.workspace }}
           scp -r -o stricthostkeychecking=no -o UserKnownHostsFile=/dev/null -i "~/prod_key.pem" ./cont/dist/* ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.REMOTE_TARGET }}
-      
-
+      - uses: stefanoeb/eslint-action@1.0.2
+        with:
+          files: 'cont/src/**/*'
       - run: echo "🍏 This job's status is ${{ job.status }}."
