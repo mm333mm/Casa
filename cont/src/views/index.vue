@@ -11,10 +11,10 @@
 export default {
   methods: {
     click(num) {
-      console.log(num)
+      console.log(num);
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped></style>
