@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Butons</h1>
-    <span v-for="num in 10">
+    <span v-for="num in 10" :key="num">
       <button @click="click(num)">{{ num }}</button>
     </span>
   </div>
