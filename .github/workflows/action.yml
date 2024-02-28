@@ -8,9 +8,6 @@ jobs:
       - name: Obtenint el codi del respositori
         uses: actions/checkout@v4
 
-      - uses: stefanoeb/eslint-action@1.0.2
-        with:
-          files: 'cont/src/**/*'
 
       - name: scp a produccio
         run: |
@@ -18,7 +15,8 @@ jobs:
           chmod 600 ~/prod_key.pem
           cd ${{ github.workspace }}
           cd ./cont
-          # npm install
+          npm install
+          npm run lint
           npm run build
           cd ${{ github.workspace }}
           scp -r -o stricthostkeychecking=no -o UserKnownHostsFile=/dev/null -i "~/prod_key.pem" ./cont/dist/* ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.REMOTE_TARGET }}
